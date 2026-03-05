@@ -155,8 +155,8 @@
         }
 
         .header-btn {
-            padding: 8px 20px;
-            font-size: 0.9rem;
+            padding: 8px 15px;
+            font-size: 0.85rem;
         }
 
         /* ===== HERO SECTION ===== */
@@ -301,15 +301,19 @@
 
         .skill-category {
             background-color: var(--bg-white);
-            padding: 30px;
+            padding: 20px 15px;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             display: flex;
             flex-direction: column;
+            width: 100%; /* Не шире экрана */
+            max-width: 100%;
+            box-sizing: border-box; /* Чтобы padding не увеличивал ширину */
         }
 
         .skill-category.full-width {
-            grid-column: span 2;
+            grid-column: span 1;
+            max-width: 100%;
         }
 
         .skill-category h3 {
@@ -321,16 +325,18 @@
         .skill-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
         }
 
         .skill-tag {
-            padding: 8px 16px;
+            padding: 6px 12px;
             background-color: var(--bg-light);
             border-radius: 20px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-dark);
             border: 1px solid var(--border-color);
+            white-space: normal; /* Перенос текста */
+            word-break: break-word;
         }
 
         /* ===== CLICKABLE SKILLS ===== */
@@ -378,9 +384,10 @@
 
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3, 1fr); /* 3 колонки на десктопе */
             gap: 30px;
             align-items: stretch;
+            padding: 0 10px;
         }
 
         .portfolio-card {
@@ -395,6 +402,7 @@
             text-align: center;
             height: 100%;
             min-height: 450px;
+            box-sizing: border-box; /* Важно для padding */
         }
         
         .portfolio-card .icon {
@@ -426,6 +434,7 @@
             width: 100%;
             min-height: 100px; 
             line-height: 1.5;
+            font-size: 0.9rem;
         }
 
         .portfolio-card .stack {
@@ -462,18 +471,28 @@
         .portfolio-links {
             display: flex;
             gap: 10px;
-            flex-wrap: nowrap;
+            flex-wrap: nowrap; /* Запрещаем перенос */
             justify-content: center;
             align-items: center;
             margin-top: auto;
             width: 100%;
+            padding: 0 10px; /* Добавил отступы по бокам */
+            box-sizing: border-box;
         }
 
         .portfolio-links .btn {
-            padding: 10px 20px;
+            padding: 10px 15px;
             font-size: 0.9rem;
+            min-width: 0; /* Убираем минимальную ширину */
+            flex: 1; /* Кнопки делят пространство поровну */
+            text-align: center;
+            white-space: nowrap; /* Запрещаем перенос текста */
+        }
+
+        /* Для кнопок в одну строку */
+        .portfolio-links .btn-outline {
+            flex: 1 1 auto;
             min-width: 120px;
-            flex: 0 0 auto;
         }
 
         /* ===== MODAL BASE STYLES ===== */
@@ -1037,7 +1056,7 @@
 
         .experience-card {
             max-width: 900px;
-            margin: 0 auto;
+            margin: 0 auto; /* Центрирование */
             background-color: var(--bg-white);
             padding: 40px;
             border-radius: 12px;
@@ -1050,12 +1069,13 @@
             justify-content: space-between;
             align-items: flex-start;
             flex-wrap: wrap;
-            gap: 20px;
+            flex-direction: column;
+            gap: 10px;
             margin-bottom: 25px;
         }
 
         .experience-header h3 {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: var(--text-dark);
             margin: 0;
         }
@@ -1077,10 +1097,11 @@
 
         .experience-list li {
             padding: 6px 0;
-            padding-left: 30px;
+            padding-left: 25px;
             position: relative;
             color: var(--text-light);
             line-height: 1.4;
+            font-size: 0.9rem;
         }
 
         .experience-list li:before {
@@ -1103,17 +1124,17 @@
 
         .contacts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 2 колонки на десктопе */
             gap: 40px;
             max-width: 900px;
-            margin: 0 auto;
+            margin: 0 auto;    
         }
 
         .contact-item {
             display: flex;
             align-items: center;
             gap: 15px;
-            padding: 20px;
+            padding: 15px;
             background-color: var(--bg-light);
             border-radius: 12px;
             transition: all 0.3s ease;
@@ -1204,8 +1225,8 @@
             .hero-content {
                 grid-template-columns: 1fr;
                 text-align: center;
-                gap: 40px;
-                padding: 0 20px;
+                gap: 30px;
+                padding: 0 15px;
             }
 
             .hero-text {
@@ -1213,12 +1234,13 @@
             }
 
             .hero-text h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
             .hero-buttons {
                 justify-content: center;
                 flex-wrap: wrap;
+                gap: 10px;
             }
 
             .btn {
@@ -1231,15 +1253,29 @@
             }
 
             h2 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+                padding: 0 15px;
             }
 
             .portfolio-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* 1 колонка на мобильном */
+                display: grid;
+                gap: 30px;
+            }
+
+            .portfolio-card .portfolio-links {
+                grid-template-columns: 1fr; /* Одна колонка на мобильном */
+            }
+    
+            .portfolio-card .portfolio-links .btn:only-child {
+                grid-column: span 1;
             }
 
             .skills-grid {
-                grid-template-columns: 1fr;
+                display: grid;
+                grid-template-columns: 1fr; /* 1 колонка на мобильном */
+                gap: 30px;
+                padding: 0 10px;
             }
 
             .experience-header {
@@ -1254,17 +1290,27 @@
                 grid-column: span 1;
             }
 
+            .contacts-grid {
+                grid-template-columns: 1fr; /* 1 колонка на мобильном */
+            }
+
+            .experience-card {
+                padding: 20px 15px;
+                margin: 0 10px; /* Отступы на мобильном */
+            }
+
             .modal {
                 padding: 25px 15px;
             }
 
             .modal-content {
                 max-width: 95%;
+                padding: 15px;
             }
 
             .modal-title {
                 font-size: 1.5rem;
-                margin-bottom: 15px;
+                margin-bottom: 20px;
             }
 
             .modal-close {
@@ -1274,13 +1320,13 @@
             }
 
             #testimonialsModal .review-image {
-                max-height: 55vh;
+                max-height: 50vh;
             }
 
             #testimonialsModal .carousel-btn {
                 width: 40px;
                 height: 40px;
-                font-size: 1.1rem;
+                font-size: 1.2rem;
             }
 
             #resumeModal iframe {
@@ -1335,6 +1381,7 @@
                 width: 100%;
                 max-width: 100%;
             }
+
         }
 
         @media (max-width: 480px) {
@@ -1357,7 +1404,11 @@
             }
 
             .hero-text h1 {
-                font-size: 1.8rem;
+                font-size: 1.5rem;
+            }
+
+            .hero-text .subtitle {
+                font-size: 1rem;
             }
 
             .modal-back-btn {
@@ -1369,12 +1420,23 @@
                 font-size: 1.3rem;
             }
 
+            .skill-tag {
+                font-size: 0.8rem;
+                padding: 5px 10px;
+            }
+
             .btn {
-                padding: 12px 25px;
+                padding: 12px 20px;
+                font-size: 0.9rem;
             }
 
             .btn-outline {
                 padding: 10px 23px;
+            }
+
+            .modal-back-btn {
+                min-width: 100%;
+                padding: 12px 20px;
             }
         }
 
