@@ -1,0 +1,2241 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анна Андреева | Middle QA Engineer</title>
+    <style>
+        /* ===== BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #7c3aed;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --border-color: #e5e7eb;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--text-dark);
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            line-height: 1.4;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            min-width: 160px;
+            white-space: nowrap;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 12px 24px;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-small {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .header-btn {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: 160px 0 100px;
+    	    background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            justify-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 60px;
+        }
+
+        .hero-text {
+            width: 100%;
+            padding-right: 20px;
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .hero-text .tech-stack {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .hero-image {
+            text-align: center;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-left: 20px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 420px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            object-fit: cover;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about {
+            background-color: var(--bg-white);
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .approach-item {
+            padding: 25px;
+            background-color: var(--bg-light);
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .approach-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .approach-item p {
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        .career-goal {
+            margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .career-goal h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .career-goal p {
+            margin: 0;
+            opacity: 0.95;
+        }
+
+        /* ===== SKILLS SECTION ===== */
+        .skills {
+            background-color: var(--bg-light);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        .skill-category {
+            background-color: var(--bg-white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .skill-category.full-width {
+            grid-column: span 2;
+        }
+
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            padding: 8px 16px;
+            background-color: var(--bg-light);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            border: 1px solid var(--border-color);
+        }
+
+        /* ===== CLICKABLE SKILLS ===== */
+        .skill-tag.clickable {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-right: 35px;
+        }
+
+        .skill-tag.clickable:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .skill-tag.clickable .cert-icon {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .skill-tag.clickable:hover .cert-icon {
+            opacity: 1;
+            color: white;
+        }
+
+        /* ===== PORTFOLIO SECTION ===== */
+        .portfolio {
+            background-color: var(--bg-white);
+        }
+
+        .portfolio-section-title {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin: 60px 0 40px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary-color);
+            text-align: left;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        .portfolio-card {
+            background-color: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            height: 100%;
+            min-height: 450px;
+        }
+        
+        .portfolio-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: block;
+            text-align: center;
+            width: 100%;
+            min-height: 60px; 
+        }
+
+        .portfolio-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            text-align: center;
+            width: 100%;
+            min-height: 65px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.3;
+        }
+
+        .portfolio-card p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            text-align: center;
+            width: 100%;
+            min-height: 100px; 
+            line-height: 1.5;
+        }
+
+        .portfolio-card .stack {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+            width: 100%;
+            min-height: 40px;
+        }
+
+        .status-tag {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+            min-height: 30px;
+        }
+
+        .status-ready {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+
+        .status-wip {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
+        .portfolio-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            margin-top: auto;
+            width: 100%;
+        }
+
+        .portfolio-links .btn {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            min-width: 120px;
+            flex: 0 0 auto;
+        }
+
+        /* ===== MODAL BASE STYLES ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            animation: fadeIn 0.3s ease;
+            overflow-y: auto;
+            padding: 50px 20px;
+        }
+
+        .modal.active {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+        }
+
+        .modal-close {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            z-index: 2001;
+            background: none;
+            border: none;
+        }
+
+        .modal-close:hover {
+            color: var(--primary-color);
+        }
+
+        .modal-title {
+            color: white;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            font-weight: 700;
+            width: 100%;
+            order: 1;
+            flex-shrink: 0;
+        }
+
+        .modal-content {
+            max-width: 80%;
+            max-height: 60vh;
+            border-radius: 8px;
+            animation: zoomIn 0.3s ease;
+            text-align: center;
+            margin: 0 auto 30px auto;
+            background: transparent;
+            order: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 1;
+        }
+
+        .modal-content img,
+        .modal-content video {
+            max-width: 100%;
+            max-height: 60vh;
+            border-radius: 8px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-back-btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-decoration: none;
+            min-width: 280px;
+            order: 3;
+            flex-shrink: 0;
+        }
+
+        .modal-back-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .modal-buttons-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 0;
+            gap: 0;
+            order: 3;
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        /* ===== RESUME MODAL ===== */
+        #resumeModal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            animation: fadeIn 0.3s ease;
+            overflow-y: auto;
+            padding: 60px 20px 40px 20px;
+        }
+
+        #resumeModal.active {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+        }
+
+        #resumeModal .modal-content {
+            max-width: 90%;
+            max-height: 85vh;
+            width: 100%;
+            background: transparent;
+            margin: 0 auto;
+            flex-shrink: 0;
+            order: 2 !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #resumeModal iframe {
+            width: 100%;
+            max-width: 1000px;
+            height: 95vh !important;;
+            border: 2px solid white;
+            border-radius: 8px;
+            background: white;
+            display: block;
+            margin-bottom: 25px;
+        }
+
+        #resumeModal .modal-title {
+            color: white;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            margin-top: 0;
+            font-weight: 700;
+            width: 100%;
+            flex-shrink: 0;
+            order: 1 !important;
+        }
+
+        #resumeModal .resume-buttons-vertical {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 0;
+            order: 3 !important;
+        }
+
+        #resumeModal .modal-close {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            z-index: 2001;
+            background: none;
+            border: none;
+        }
+
+        #resumeModal .resume-buttons-vertical .btn,
+        #resumeModal .resume-buttons-vertical .modal-back-btn {
+            width: 100%;
+            max-width: 350px;
+            min-width: auto;
+            margin: 0;
+        }
+
+        #resumeModal .modal-close:hover {
+            color: var(--primary-color);
+        }
+
+        /* ===== TESTIMONIALS MODAL - FIXED LAYOUT ===== */
+        #testimonialsModal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            animation: fadeIn 0.3s ease;
+            overflow-y: auto;
+            padding: 60px 20px 80px 20px; /* Отступы сверху и снизу */
+        }
+
+        #testimonialsModal.active {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+        }
+
+        #testimonialsModal .modal-title {
+            color: white !important;
+            text-align: center;
+            font-size: 2rem;
+            margin: 0 0 110px 0; /* Отступ 20px снизу до картинки */ 
+            font-weight: 700;
+            width: 100%;
+            order: 1;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 10;
+            background: transparent !important; /* Убираем фон/рамку */
+            padding: 0; 
+            border: none !important;
+            box-shadow: none !important;
+            line-height: 1.3;
+        }
+
+        #testimonialsModal .modal-content {
+            max-width: 850px;
+            width: 100%;
+            background: transparent;
+            margin: 0 auto;
+            flex-shrink: 0;
+            order: 2;
+        }
+
+        #testimonialsModal .carousel-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            background: #000000;
+            border-radius: 12px;
+            padding: 0;
+            margin-bottom: 0;
+            border: none;
+        }
+
+        #testimonialsModal .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+            border-radius: 8px;
+            margin: 0 0 20px 0; /* Отступ 20px снизу до стрелок */ 
+            background: #000000;
+            padding: 0;
+        }
+
+        #testimonialsModal .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        #testimonialsModal .testimonial-card {
+            min-width: 100%;
+            padding: 0;
+            background-color: transparent;
+            border-radius: 8px;
+        }
+
+        #testimonialsModal .review-image {
+            width: 100%;
+            max-height: 60vh;
+            object-fit: contain;
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto;
+            background: #000000; /* Черный фон под картинкой */
+        }
+
+        #testimonialsModal .carousel-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin: 0 0 95px 0; /* Отступ снизу до кнопки */
+            gap: 5px;  /* Расстояния между стрелками и точками */
+        }
+
+        #testimonialsModal .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        #testimonialsModal .carousel-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(255,255,255,0.3); /* Белая тень для контраста */
+            z-index: 10;
+        }
+
+        #testimonialsModal .carousel-btn:hover {
+            background-color: var(--primary-dark);
+            transform: scale(1.1);
+        }
+
+        #testimonialsModal .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 0;
+            padding: 10px 0; /* Небольшой отступ для видимости */
+        }
+
+        #testimonialsModal .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.5); /* Белые неактивные точки */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255,255,255,0.3); /* Рамка для контраста */
+            opacity: 1 !important;
+            display: block !important;
+            visibility: visible !important;
+        }
+
+        #testimonialsModal .dot.active {
+            background-color: var(--primary-color) !important;
+            transform: scale(1.3);
+            border-color: var(--primary-color) !important;
+            opacity: 1 !important;
+        }
+
+        #testimonialsModal .modal-buttons-row {
+            order: 3;
+            margin: 0;
+            margin-top: 0;  
+            margin-bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-shrink: 0;
+            padding-top: 0;
+            border-top: none;
+        }
+
+        #testimonialsModal .modal-back-btn {
+            margin: 0;
+            min-width: 280px;
+            position: relative;
+            z-index: 10;
+        }
+
+        #testimonialsModal .modal-close {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            z-index: 2001;
+            background: none;
+            border: none;
+        }
+
+        #testimonialsModal .modal-close:hover {
+            color: var(--primary-color);
+        }
+
+        /* ===== QR MODAL ===== */
+        #qrModal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            animation: fadeIn 0.3s ease;
+            overflow-y: auto;
+            padding: 60px 20px 40px 20px; /* Больше отступов сверху и снизу */
+        }
+
+        #qrModal.active {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+        }
+
+        #qrModal .modal-content {
+            max-width: 590px;
+            background: transparent;
+            margin: 0 auto;
+            flex-shrink: 0;
+            order: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #qrModal .qr-image-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0;
+            background: #000000;
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        #qrModal img {
+            max-width: 320px;
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            display: block;
+            margin: 0 auto 25px auto; /* Отступ снизу до текста */
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            object-fit: contain;
+        }
+
+        #qrModal .modal-title {
+            color: white !important;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 35px; /* Увеличенный отступ до картинки */
+            margin-top: 0;
+            font-weight: 700;
+            width: 100%;
+            flex-shrink: 0;
+            order: 1;
+            position: relative;
+            z-index: 10;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            line-height: 1.3;
+        }
+
+        #qrModal p {
+            color: white;
+            text-align: center;
+            margin: 15px 0 0 0; 
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+ 
+        #qrModal .modal-buttons-row {
+            margin-top: 30px;
+            margin-bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-shrink: 0;
+            order: 3;
+            padding-top: 0;
+            border-top: none;
+        }
+
+        #qrModal .modal-back-btn {
+            margin: 0;
+            min-width: 280px;
+            position: relative;
+            z-index: 10;
+        }
+
+        #qrModal .modal-close {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            z-index: 2001;
+            background: none;
+            border: none;
+        }
+
+        #qrModal .modal-close:hover {
+            color: var(--primary-color);
+        }
+
+        /* ===== CICD SCREENSHOTS ===== */
+        .cicd-screenshots {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 10px !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 100% !important;
+            padding: 10px 0 !important;
+        }
+
+        .cicd-screenshots img {
+            max-width: 100% !important;
+            max-height: 35vh !important;
+            width: auto !important;
+            height: auto !important;
+            border-radius: 8px !important;
+            object-fit: contain !important;
+            display: block !important;
+            margin: 0 auto !important;
+        }
+
+        #imageModal .modal-content {
+            max-height: 90vh !important;
+            overflow-y: auto !important;
+            padding: 20px !important;
+            max-width: 90% !important;
+        }
+
+        /* ===== EXPERIENCE SECTION ===== */
+        .experience {
+            background-color: var(--bg-light);
+        }
+
+        .experience-card {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--bg-white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .experience-header h3 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin: 0;
+        }
+
+        .experience-period {
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .experience-role {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .experience-list {
+            list-style: none;
+        }
+
+        .experience-list li {
+            padding: 6px 0;
+            padding-left: 30px;
+            position: relative;
+            color: var(--text-light);
+            line-height: 1.4;
+        }
+
+        .experience-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: 700;
+        }
+
+        .resume-link {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        /* ===== CONTACTS SECTION ===== */
+        .contacts {
+            background-color: var(--bg-white);
+        }
+
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background-color: var(--bg-light);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+        }
+
+        .contact-info a {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .contact-info a:hover {
+            color: var(--primary-color);
+        }
+
+        .contact-info button {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            cursor: pointer;
+            font-weight: 500;
+            padding: 0;
+            font-size: 1rem;
+        }
+
+        .contact-info button:hover {
+            color: var(--primary-dark);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--text-dark);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+                padding: 0 20px;
+            }
+
+            .hero-text {
+                padding-right: 0;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 140px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-header {
+                flex-direction: column;
+            }
+
+            .approach-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skill-category.full-width {
+                grid-column: span 1;
+            }
+
+            .modal {
+                padding: 25px 15px;
+            }
+
+            .modal-content {
+                max-width: 95%;
+            }
+
+            .modal-title {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+            }
+
+            .modal-close {
+                top: 15px;
+                right: 20px;
+                font-size: 35px;
+            }
+
+            #testimonialsModal .review-image {
+                max-height: 55vh;
+            }
+
+            #testimonialsModal .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+
+            #resumeModal iframe {
+                height: 55vh;
+            }
+
+            #resumeModal .modal-content {
+                max-width: 98%;
+            }
+
+            #certificateModal .certificate-info {
+                padding: 20px;
+            }
+
+            #certificateModal .certificate-image {
+                max-height: 35vh;
+            }
+
+            #videoModal .modal-content {
+                max-width: 95%;
+            }
+
+            #videoModal video {
+                max-height: 60vh;
+            }
+
+            #imageModal {
+                padding: 30px 15px;
+            }
+    
+            #imageModal .modal-title {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+    
+            #imageModal .modal-content {
+                max-height: 55vh;
+                max-width: 95%;
+            }
+    
+            #imageModal .modal-content img {
+                max-height: 55vh;
+            }
+    
+            #imageModal .modal-back-btn {
+                min-width: 250px;
+            }
+
+            .modal-buttons-row .btn,
+            .modal-buttons-row .modal-back-btn {
+                min-width: auto;
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #testimonialsModal .review-image {
+                max-height: 45vh;
+            }
+
+            #testimonialsModal .carousel-btn {
+                width: 38px;
+                height: 38px;
+            }
+
+            #imageModal .modal-title {
+                font-size: 1.3rem;
+            }
+    
+            #imageModal .modal-back-btn {
+                min-width: 200px;
+                padding: 12px 25px;
+            }
+
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+
+            .modal-back-btn {
+                padding: 12px 25px;
+                font-size: 0.9rem;
+            }
+
+            .modal-title {
+                font-size: 1.3rem;
+            }
+
+            .btn {
+                padding: 12px 25px;
+            }
+
+            .btn-outline {
+                padding: 10px 23px;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* ===== IMAGE MODAL - VERTICAL CENTERED ===== */
+    #imageModal {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+        animation: fadeIn 0.3s ease;
+        overflow-y: auto;
+        padding: 50px 20px;
+    }
+
+    #imageModal.active {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+    }
+
+    #imageModal .modal-title {
+        color: white;
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 30px;
+        font-weight: 700;
+        width: 100%;
+        order: 1;
+        flex-shrink: 0;
+     }
+
+     #imageModal .modal-content {
+        max-width: 80%;
+        max-height: 60vh;
+        border-radius: 8px;
+        animation: zoomIn 0.3s ease;
+        text-align: center;
+        margin: 0 auto 30px auto;
+        background: transparent;
+        order: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 1;
+     }
+
+    #imageModal .modal-content img {
+        max-width: 100%;
+        max-height: 60vh;
+        border-radius: 8px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    #imageModal .modal-buttons-row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0;
+        margin-bottom: 20px;
+        gap: 0;
+        order: 3;
+        width: 100%;
+        flex-shrink: 0;
+    }
+
+    #imageModal .modal-back-btn {
+        margin-top: 0;
+        min-width: 280px;
+    }
+
+    #imageModal .modal-close {
+        position: fixed;
+        top: 20px;
+        right: 30px;
+        color: white;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: color 0.3s ease;
+        z-index: 2001;
+        background: none;
+        border: none;
+    }
+
+    #imageModal .modal-close:hover {
+        color: var(--primary-color);
+    }
+    </style>
+</head>
+<body>
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Анна Андреева</div>
+                <ul class="nav-links">
+                    <li><a href="#about">Обо мне</a></li>
+                    <li><a href="#skills">Навыки</a></li>
+                    <li><a href="#portfolio">Портфолио</a></li>
+                    <li><a href="#experience">Опыт</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+                <button class="btn btn-outline header-btn" onclick="openResumeModal()">📄 Резюме</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Middle QA Engineer | Automation & Leadership</h1>
+                    <p class="subtitle">Внедряю автоматизацию с нуля. Развиваю команды. Использую ИИ для ускорения процессов.</p>
+                    <p class="tech-stack">Python • Playwright • Selenium • PostgreSQL • CI/CD</p>
+                    <div class="hero-buttons">
+                        <a href="#portfolio" class="btn">Смотреть проекты</a>
+                        <button class="btn btn-outline" onclick="openResumeModal()">Скачать резюме</button>
+                        <a href="#contacts" class="btn btn-outline">Связаться</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="photo.jpg" alt="Анна Андреева - QA Engineer">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT SECTION ===== -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Обо мне</h2>
+            <div class="about-content">
+                <h3 style="text-align: center; margin-bottom: 30px;">QA Engineer с 18-летним опытом в IT</h3>
+                <p class="about-text">
+                    Последние 3 года активно развиваюсь в автоматизации тестирования и ручном QA. 
+                    С нуля внедрила автоматизацию в проекте: выбрала стек (Python, Pytest, Selenium, Playwright), 
+                    разработала архитектуру тестов и документацию.
+                </p>
+                <p class="about-text">
+                    Исполняю обязанности QA Lead: распределяю задачи, провожу код-ревью, помогаю развиваться коллегам. 
+                    Ценю структуру, глубокий фокус и прозрачность процессов.
+                </p>
+
+                <div class="approach-grid">
+                    <div class="approach-item">
+                        <h4>🔍 Исследователь-практик</h4>
+                        <p>Люблю «щупать руками» и разбираться в деталях</p>
+                    </div>
+                    <div class="approach-item">
+                        <h4>🤖 Продвинутый пользователь ИИ</h4>
+                        <p>Интегрирую AI-инструменты в рабочие процессы</p>
+                    </div>
+                    <div class="approach-item">
+                        <h4>🌱 Наставник</h4>
+                        <p>Люблю растить людей и помогать развиваться</p>
+                    </div>
+                    <div class="approach-item">
+                        <h4>📊 Аналитическое мышление</h4>
+                        <p>От требований до тестовой документации</p>
+                    </div>
+                </div>
+
+                <div class="career-goal">
+                    <h4>🎯 Карьерная цель</h4>
+                    <p>Стать Team Lead команды тестировщиков, чтобы руководить, помогать и создавать условия для роста других</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SKILLS SECTION ===== -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>Навыки</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>🧪 QA и тестирование</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag clickable" onclick="openCertificateModal('cert_functional.jpg', 'Функциональное тестирование')">
+                            Функциональное тестирование
+                            <span class="cert-icon">📜</span>
+                        </span>
+                        <span class="skill-tag">Ручное тестирование</span>
+                        <span class="skill-tag">Black box testing</span>
+                        <span class="skill-tag">UI/UX тестирование</span>
+                        <span class="skill-tag">Исследовательское тестирование</span>
+                        <span class="skill-tag">Check-list</span>
+                        <span class="skill-tag">Test-case</span>
+                        <span class="skill-tag">Bug Reporting</span>
+                        <span class="skill-tag">Работа с требованиями</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🤖 Автоматизация</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag clickable" onclick="openCertificateModal('cert_oop.jpg', 'ООП')">
+                            ООП
+                            <span class="cert-icon">📜</span>
+                        </span>
+                        <span class="skill-tag">Selenium WebDriver</span>
+                        <span class="skill-tag">Playwright</span>
+                        <span class="skill-tag">Page Object Model</span>
+                        <span class="skill-tag">Allure Report</span>
+                        <span class="skill-tag">Автоматизация тестирования</span>
+                        <span class="skill-tag">Подготовка тестовых данных</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>📡 API и БД</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Postman</span>
+                        <span class="skill-tag clickable" onclick="openCertificateModal('cert_api.jpg', 'REST API')">
+                            REST API
+                            <span class="cert-icon">📜</span>
+                        </span>
+                        <span class="skill-tag">Swagger</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">pgAdmin</span>
+                        <span class="skill-tag">Работа с БД</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🛠️ Инструменты</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">GitLab</span>
+                        <span class="skill-tag">CI/CD</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">PyCharm</span>
+                        <span class="skill-tag">DevTools</span>
+                        <span class="skill-tag">Lens</span>
+                        <span class="skill-tag">Apache Kafka</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>📋 Управление</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Jira</span>
+                        <span class="skill-tag">Zephyr</span>
+                        <span class="skill-tag">TestIT</span>
+                        <span class="skill-tag">Gitea</span>
+                        <span class="skill-tag">Trello</span>
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">Agile</span>
+                        <span class="skill-tag">Написание документации</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🤖 AI и инновации</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">ChatGPT</span>
+                        <span class="skill-tag">Claude</span>
+                        <span class="skill-tag">DeepSeek</span>
+                        <span class="skill-tag">Midjourney</span>
+                        <span class="skill-tag">Ideogram</span>
+                        <span class="skill-tag">RunwayML</span>
+                        <span class="skill-tag">VeedIO</span>
+                        <span class="skill-tag">Промпт-инжиниринг</span>
+                        <span class="skill-tag">Интеграция AI</span>
+                    </div>
+                </div>
+
+                <div class="skill-category full-width" style="grid-column: span 2; max-width: 700px; margin: 0 auto;">
+                    <h3>📝 Тест-дизайн и документация</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Техники тест-дизайна</span>
+                        <span class="skill-tag clickable" onclick="openCertificateModal('cert_regression.jpg', 'Регрессионное тестирование')">
+                            Регрессионное тестирование
+                            <span class="cert-icon">📜</span>
+                        </span>
+                        <span class="skill-tag">Составление тест-плана</span>
+                        <span class="skill-tag">Написание документаций</span>
+                        <span class="skill-tag">Автоматизация тестирования</span>
+                        <span class="skill-tag">Тестирование WEB & Mobile</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PORTFOLIO SECTION ===== -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2>Портфолио</h2>
+
+            <!-- Часть 1: Автоматизация тестирования -->
+            <h3 class="portfolio-section-title">🔹 Автоматизация тестирования</h3>
+            <div class="portfolio-grid">
+                <!-- Card 1: Selenium -->
+                <div class="portfolio-card">
+                    <div class="icon">🧪</div>
+                    <h3>Автотесты: Selenium</h3>
+                    <p>Классический подход к UI-автотестам. Стабильность, простота поддержки, кросс-браузерность.</p>
+                    <p class="stack">Python • Selenium • Pytest • Allure</p>
+                    <span class="status-tag status-ready">✅ Готово</span>
+                    <div class="portfolio-links">
+                        <button class="btn" onclick="openImageModal('selenium.png', 'Структура Selenium')">Скриншот</button>
+                        <a href="https://github.com/Annutan/project_news" class="btn btn-outline" target="_blank">GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Card 2: Playwright POM -->
+                <div class="portfolio-card">
+                    <div class="icon">🎭</div>
+                    <h3>Автотесты: Playwright + POM</h3>
+                    <p>Современный стек с архитектурой Page Objects. Быстрое выполнение, устойчивые локаторы, видео-отчеты.</p>
+                    <p class="stack">Python • Playwright • Page Objects • Allure</p>
+                    <span class="status-tag status-ready">✅ Готово</span>
+                    <div class="portfolio-links">
+                        <button class="btn" onclick="openVideoModal('playwright_video.mp4', 'Видео структуры POM')">Видео</button>
+                        <a href="https://github.com/Annutan/Playwright-POM" class="btn btn-outline" target="_blank">GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Card 3: Documentation -->
+                <div class="portfolio-card">
+                    <div class="icon">📄</div>
+                    <h3>Документация</h3>
+                    <p>Тест-план, сценарии, чек-листы и отчеты по результатам тестирования. Прозрачность процесса для команды.</p>
+                    <p class="stack">TestIT • Gitea • Allure Report</p>
+                    <span class="status-tag status-ready">✅ Готово</span>
+                    <div class="portfolio-links">
+                        <a href="https://github.com/Annutan/Playwright-POM/tree/main/Documents" class="btn" target="_blank">GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Card 4: SQL -->
+                <div class="portfolio-card">
+                    <div class="icon">🗄️</div>
+                    <h3>SQL запросы</h3>
+                    <p>Работа с PostgreSQL: проверка целостности данных, подготовка тестовых наборов, валидация результатов.</p>
+                    <p class="stack">PostgreSQL • pgAdmin • SQL</p>
+                    <span class="status-tag status-ready">✅ Готово</span>
+                    <div class="portfolio-links">
+                        <button class="btn" onclick="openVideoModal('sql_video.mp4', 'Видео SQL запросов')">Видео</button>
+                        <a href="https://github.com/Annutan/SQL" class="btn btn-outline" target="_blank">GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Card 5: Postman -->
+                <div class="portfolio-card">
+                    <div class="icon">📡</div>
+                    <h3>Postman</h3>
+                    <p>API-тестирование: коллекция запросов, скрипты, переменные окружения, автоматизация проверок.</p>
+                    <p class="stack">Postman • REST API • Swagger</p>
+                    <span class="status-tag status-ready">✅ Готово</span>
+                    <div class="portfolio-links">
+                        <button class="btn" onclick="openImageModal('postman_screenshot.png', 'Postman скрипты и переменные')">Скриншот</button>
+                    </div>
+                </div>
+
+                <!-- Card 6: CI/CD -->
+                <div class="portfolio-card">
+                    <div class="icon">🔄</div>
+                    <h3>CI/CD Pipeline</h3>
+                    <p>Автоматизация запуска тестов в GitLab: сборка, тестирование, генерация Allure-отчетов.</p>
+                    <p class="stack">GitLab CI/CD • Docker • YAML</p>
+                    <span class="status-tag status-ready">✅ Готово</span>
+                    <div class="portfolio-links">
+                        <button class="btn" onclick="openCICDModal()">Пайплайн</button>
+                        <a href="https://gitlab.com/Annutan/Stepik/-/tree/course-content?ref_type=heads" class="btn btn-outline" target="_blank">GitLab</a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; color: var(--text-light); font-size: 0.9rem; margin-top: 40px; padding: 25px; background: var(--bg-light); border-radius: 12px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <strong>🔒 О коде в репозиториях:</strong><br>
+                • Выложен демонстрационный пример: один тест + архитектура проекта<br>
+                • Полный код содержит бизнес-логику и не публикуется в соответствии с политикой компании<br>
+                • Этого примера достаточно, чтобы оценить подход к организации автотестов
+            </div>
+
+            <!-- Часть 2: AI & Инновации -->
+            <h3 class="portfolio-section-title">🔹 AI & Инновации</h3>
+            <div class="portfolio-grid">
+                <!-- AI Project 1 -->
+                <div class="portfolio-card">
+                    <div class="icon">🤖</div>
+                    <h3>ИИ-агент для генерации тест-кейсов</h3>
+                    <p>Прототип системы на локальной LLM для автоматизации создания тестовой документации с сохранением конфиденциальности.</p>
+                    <p class="stack">Python • LLM (локальная) • Prompt Engineering</p>
+                    <span class="status-tag status-wip">🟡 В разработке</span>
+                </div>
+
+                <!-- AI Project 2 -->
+                <div class="portfolio-card">
+                    <div class="icon">🎙️</div>
+                    <h3>Инструмент транскрибации</h3>
+                    <p>Пайплайн преобразования аудио/видео в текст с помощью ИИ и постобработки промтами.</p>
+                    <p class="stack">Python • ИИ-модели • Обработка аудио/видео</p>
+                    <span class="status-tag status-wip">🟡 В разработке</span>
+                </div>
+
+                <!-- AI Project 3 -->
+                <div class="portfolio-card">
+                    <div class="icon">🧭</div>
+                    <h3>Система профориентации</h3>
+                    <p>Алгоритм анализа компетенций и формирования карьерных рекомендаций на основе данных и LLM.</p>
+                    <p class="stack">Анализ данных • LLM • Методика оценки</p>
+                    <span class="status-tag status-ready">✅ Закрыт</span>
+                    <div class="portfolio-links">
+                        <button class="btn" onclick="openTestimonialsModal()">💬 Смотреть отзывы</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== EXPERIENCE SECTION ===== -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2>Опыт работы</h2>
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <h3>НИЦ Стратком</h3>
+                        <p class="experience-role">Специалист по тестированию / QA Lead</p>
+                    </div>
+                    <p class="experience-period">Сентябрь 2022 — н.в. | 3 года 1 месяц</p>
+                </div>
+                <ul class="experience-list">
+                    <li>С нуля внедрила автоматизацию: выбор стека, архитектура, документация</li>
+                    <li>Разработка автотестов UI (Python, Playwright, Selenium)</li>
+                    <li>Ручное тестирование: фронтенд (70%), бэкенд API (30%)</li>
+                    <li>Работа с PostgreSQL для валидации данных</li>
+                    <li>QA Lead: распределение задач, код-ревью, поддержка команды</li>
+                    <li>Отчетность и коммуникация с разработкой</li>
+                </ul>
+
+                <li style="margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border-color);">
+                    <strong style="color: var(--text-dark); font-size: 0.95rem;">📈 Результаты автоматизации:</strong><br>
+                    <span style="color: var(--text-light); font-size: 0.95rem;">
+                    • 55 автотестов (CRUD + E2E) — 100% покрытие критического функционала<br>
+                    • Сокращение времени регресса на 70% (с 12 до 3.5 часов)<br>
+                    • Экономия времени команды: ~85-100 часов в год<br>
+                    • В работе: ещё 31 тест (целевое покрытие: ~70%)
+                    </span>
+                </li>
+
+                <div class="resume-link">
+                    <p style="color: var(--text-light); margin-bottom: 15px;">Полная история опыта — в резюме</p>
+                    <button class="btn btn-outline" onclick="openResumeModal()">📄 Скачать резюме</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACTS SECTION ===== -->
+    <section id="contacts" class="contacts">
+        <div class="container">
+            <h2>Контакты</h2>
+            <div class="contacts-grid">
+                <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    <div class="contact-info">
+                        <p style="margin: 0; color: var(--text-light); font-size: 0.9rem;">Email</p>
+                        <a href="mailto:annutan777@yandex.ru">annutan777@yandex.ru</a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    <div class="contact-info">
+                        <p style="margin: 0; color: var(--text-light); font-size: 0.9rem;">Телефон</p>
+                        <a href="tel:+79206739203">+7 (920) 673-92-03</a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <span class="contact-icon">💬</span>
+                    <div class="contact-info">
+                        <p style="margin: 0; color: var(--text-light); font-size: 0.9rem;">Мессенджеры</p>
+                        <button onclick="openQRModal('qr_max.jpg', 'MAX Messenger')">MAX</button> • 
+                        <button onclick="openQRModal('qr_vk.jpg', 'VK Messenger')">VK Messenger</button>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <span class="contact-icon">📄</span>
+                    <div class="contact-info">
+                        <p style="margin: 0; color: var(--text-light); font-size: 0.9rem;">Резюме</p>
+                        <button onclick="openResumeModal()">Скачать PDF</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="https://github.com/Annutan" class="social-link" target="_blank" title="GitHub">🐙</a>
+                <a href="https://gitlab.com/Annutan/Stepik.git" class="social-link" target="_blank" title="GitLab">🦊</a>
+                <a href="mailto:annutan777@yandex.ru" class="social-link" title="Email">📧</a>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px; padding: 30px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: 12px; color: white; max-width: 700px; margin-left: auto; margin-right: auto;">
+                <h4 style="margin-bottom: 15px; font-size: 1.5rem;">🚀 Готова к новым вызовам</h4>
+                <p style="margin-bottom: 25px; opacity: 0.95; font-size: 1.1rem;">Открыта к предложениям на позицию Middle QA Engineer / QA Lead</p>
+                <a href="mailto:annutan777@yandex.ru" class="btn" style="background: white; color: var(--primary-color); padding: 14px 40px; font-size: 1rem;">Написать мне</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+       <div class="container">
+            <p>© 2026 Анна Андреева | Middle QA Engineer</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">Создано с ❤️ и AI</p>
+        </div>
+    </footer>
+
+    <!-- ===== IMAGE MODAL ===== -->
+    <div id="imageModal" class="modal">
+        <button class="modal-close" onclick="closeImageModal()">&times;</button>
+        <h3 class="modal-title" id="imageModalTitle">Заголовок</h3>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="">
+        </div>
+        <div class="modal-buttons-row">
+            <button class="modal-back-btn" onclick="closeImageModal()">← Вернуться к резюме</button>
+        </div>
+    </div>
+
+    
+
+    <!-- ===== VIDEO MODAL ===== -->
+    <div id="videoModal" class="modal">
+        <button class="modal-close" onclick="closeVideoModal()">&times;</button>
+        <h3 class="modal-title" id="videoModalTitle">Заголовок</h3>
+        <div class="modal-content">
+            <video id="modalVideo" controls autoplay playsinline></video>
+        </div>
+        <div class="modal-buttons-row">
+            <button class="modal-back-btn" onclick="closeVideoModal()">← Вернуться к резюме</button>
+        </div>
+    </div>
+
+    <!-- ===== TESTIMONIALS MODAL ===== -->
+    <div id="testimonialsModal" class="modal">
+        <button class="modal-close" onclick="closeTestimonialsModal()">&times;</button>
+        <h3 class="modal-title">💬 Отзывы о проекте</h3>
+        <div class="modal-content">
+            <div class="carousel-wrapper">
+                <div class="carousel-container">
+                    <div class="carousel-track" id="testimonialTrack">
+                        <div class="testimonial-card">
+                            <img src="review1.jpg" alt="Отзыв 1" class="review-image">
+                        </div>
+                        <div class="testimonial-card">
+                            <img src="review2.jpg" alt="Отзыв 2" class="review-image">
+                        </div>
+                        <div class="testimonial-card">
+                            <img src="review3.jpg" alt="Отзыв 3" class="review-image">
+                        </div>
+                        <div class="testimonial-card">
+                            <img src="review4.jpg" alt="Отзыв 4" class="review-image">
+                        </div>
+                        <div class="testimonial-card">
+                            <img src="review5.jpg" alt="Отзыв 5" class="review-image">
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <div class="carousel-nav">
+                        <button class="carousel-btn" onclick="moveCarousel(-1)">‹</button>
+                        <button class="carousel-btn" onclick="moveCarousel(1)">›</button>
+                    </div>
+                    <div class="carousel-dots" id="carouselDots">
+                        <span class="dot active" onclick="goToSlide(0)"></span>
+                        <span class="dot" onclick="goToSlide(1)"></span>
+                        <span class="dot" onclick="goToSlide(2)"></span>
+                        <span class="dot" onclick="goToSlide(3)"></span>
+                        <span class="dot" onclick="goToSlide(4)"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-buttons-row">
+            <button class="modal-back-btn" onclick="closeTestimonialsModal()">← Вернуться к резюме</button>
+        </div>
+    </div>
+
+    <!-- ===== RESUME MODAL ===== -->
+    <div id="resumeModal" class="modal">
+        <button class="modal-close" onclick="closeResumeModal()">&times;</button>
+        <h3 class="modal-title">📄 Моё резюме</h3>
+        <div class="modal-content">
+            <!-- PDF Viewer -->
+            <iframe src="resume.pdf" title="Резюме" id="resumeIframe" style="height: 80vh !important;"></iframe>
+            
+            <!-- Buttons Vertical -->
+            <div class="resume-buttons-vertical">
+                <a href="resume.pdf" class="btn btn-outline" target="_blank">🔗 Открыть в новой вкладке</a>
+                <button class="modal-back-btn" onclick="closeResumeModal()">← Вернуться к резюме</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== QR CODE MODAL ===== -->
+    <div id="qrModal" class="modal">
+        <button class="modal-close" onclick="closeQRModal()">&times;</button>
+        <h3 class="modal-title" id="qrModalTitle">QR Code</h3>
+        <div class="modal-content">
+            <div class="qr-image-container">    
+                <img id="qrImage" src="" alt="QR Code">
+                <p>Отсканируйте QR-код для связи</p>
+            </div>
+        </div>
+        <div class="modal-buttons-row">
+            <button class="modal-back-btn" onclick="closeQRModal()">← Вернуться к резюме</button>
+        </div>
+    </div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // ===== Smooth Scroll =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+            // ===== IMAGE MODAL FUNCTIONS =====
+            const imageModal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const imageModalTitle = document.getElementById('imageModalTitle');
+
+            function openImageModal(src, title) {
+                if (modalImage && imageModalTitle && imageModal) {
+                    // Восстанавливаем стандартную структуру для обычных картинок
+                    const modalContent = document.querySelector('#imageModal .modal-content');
+                    if (modalContent) {
+                        modalContent.innerHTML = '<img id="modalImage" src="" alt="">';
+                    }
+
+                    // Получаем обновленную ссылку на modalImage
+                    const currentModalImage = document.getElementById('modalImage');
+                    if (currentModalImage) {
+                        currentModalImage.src = src;
+                        currentModalImage.alt = title;
+                    }
+
+                    imageModalTitle.textContent = title;
+                    imageModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+
+            function closeImageModal() {
+                const imageModal = document.getElementById('imageModal');
+                const modalImage = document.getElementById('modalImage');
+    
+                if (imageModal) {
+                    imageModal.classList.remove('active');
+                }
+    
+                if (modalImage) {
+                    modalImage.src = '';
+                    modalImage.alt = '';
+                }
+    
+                document.body.style.overflow = 'auto';
+            }
+
+            // ===== VIDEO MODAL FUNCTIONS =====
+            const videoModal = document.getElementById('videoModal');
+            const modalVideo = document.getElementById('modalVideo');
+            const videoModalTitle = document.getElementById('videoModalTitle');
+
+            function openVideoModal(src, title) {
+                modalVideo.src = src;
+                videoModalTitle.textContent = title;
+                videoModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeVideoModal() {
+                videoModal.classList.remove('active');
+                modalVideo.pause();
+                modalVideo.src = '';
+                document.body.style.overflow = 'auto';
+            }
+
+            // ===== CICD MODAL FUNCTION =====
+            function openCICDModal() {
+                const imageModal = document.getElementById('imageModal');
+                const imageModalTitle = document.getElementById('imageModalTitle');
+                const modalContent = document.querySelector('#imageModal .modal-content');
+
+                if (modalContent && imageModalTitle && imageModal) {
+                    // Специальная структура для CI/CD с двумя картинками
+                    modalContent.innerHTML = `
+                        <div class="cicd-screenshots">
+                            <img src="cicd_screenshot1.png" alt="CI/CD Pipeline 1">
+                            <img src="cicd_screenshot2.png" alt="CI/CD Pipeline 2">
+                        </div>
+    `                ;
+
+                    imageModalTitle.textContent = 'CI/CD Pipeline - работающий пайплайн';
+                    imageModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }   
+            }
+
+            // ===== CERTIFICATE MODAL FUNCTIONS =====
+            function openCertificateModal(certFile, certName) {
+                const modalImage = document.getElementById('modalImage');
+                const imageModalTitle = document.getElementById('imageModalTitle');
+                const imageModal = document.getElementById('imageModal');
+
+                modalImage.src = certFile;
+                imageModalTitle.textContent = `Сертификат: ${certName}`;
+                imageModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeCertificateModal() {
+                const imageModal = document.getElementById('imageModal');
+                const modalImage = document.getElementById('modalImage');
+
+                modalImage.src = '';
+                imageModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+
+            // ===== TESTIMONIALS MODAL FUNCTIONS =====
+            const testimonialsModal = document.getElementById('testimonialsModal');
+            let currentSlide = 0;
+            const totalSlides = 5;
+            const track = document.getElementById('testimonialTrack');
+            const dots = document.querySelectorAll('.dot');
+
+            function openTestimonialsModal() {
+                testimonialsModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                updateCarousel();
+            }
+
+            function closeTestimonialsModal() {
+                testimonialsModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+
+            function updateCarousel() {
+                track.style.transform = `translateX(-${currentSlide * 100}%)`;
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+            }
+
+            function moveCarousel(direction) {
+                currentSlide += direction;
+                if (currentSlide < 0) currentSlide = totalSlides - 1;
+                if (currentSlide >= totalSlides) currentSlide = 0;
+                updateCarousel();
+            }
+
+            function goToSlide(index) {
+                currentSlide = index;
+                updateCarousel();
+            }
+
+            // ===== RESUME MODAL FUNCTIONS =====
+            const resumeModal = document.getElementById('resumeModal');
+
+            function openResumeModal() {
+                resumeModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeResumeModal() {
+                resumeModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+
+            // ===== QR CODE MODAL FUNCTIONS =====
+            const qrModal = document.getElementById('qrModal');
+            const qrImage = document.getElementById('qrImage');
+            const qrModalTitle = document.getElementById('qrModalTitle');
+
+            function openQRModal(qrFile, messengerName) {
+                qrImage.src = qrFile;
+                qrModalTitle.textContent = `📱 ${messengerName}`;
+                qrModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeQRModal() {
+                qrModal.classList.remove('active');
+                qrImage.src = '';
+                document.body.style.overflow = 'auto';
+            }
+
+            // ===== CLOSE MODALS ON ESCAPE =====
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    if (imageModal.classList.contains('active')) closeImageModal();
+                    if (videoModal.classList.contains('active')) closeVideoModal();
+                    if (testimonialsModal.classList.contains('active')) closeTestimonialsModal();
+                    if (resumeModal.classList.contains('active')) closeResumeModal();
+                    if (certificateModal.classList.contains('active')) closeCertificateModal();
+                    if (qrModal.classList.contains('active')) closeQRModal();
+                }
+            });
+
+            // ===== CLOSE MODALS ON CLICK OUTSIDE =====
+            imageModal.addEventListener('click', function(e) {
+                if (e.target === imageModal) closeImageModal();
+            });
+
+            videoModal.addEventListener('click', function(e) {
+                if (e.target === videoModal) closeVideoModal();
+            });
+
+            testimonialsModal.addEventListener('click', function(e) {
+                if (e.target === testimonialsModal) closeTestimonialsModal();
+            });
+
+            resumeModal.addEventListener('click', function(e) {
+                if (e.target === resumeModal) closeResumeModal();
+            });
+
+            certificateModal.addEventListener('click', function(e) {
+                if (e.target === certificateModal) closeCertificateModal();
+            });
+
+            qrModal.addEventListener('click', function(e) {
+                if (e.target === qrModal) closeQRModal();
+            });     
+    </script>           
+</body>
+</html>
